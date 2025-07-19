@@ -247,6 +247,24 @@ const Botones = ({ onPlayPause, onRewind, onForward, onToggleMute, isMuted, isPl
 		setGaleriaActual(urlsGalerias[tipoActualModal] || "");
 	  }
 	}, [esVertical, urlMiAnuncio, urlsGalerias, tipoActualModal, modalAbierto]);
+	
+	// Manejar historial
+	useEffect(() => {
+	  const manejarPopState = (event) => {
+		if (modalAbierto) {
+		  setModalAbierto(false);
+		  setTipoActualModal(null);
+		}
+	  };
+
+	  if (modalAbierto) {
+		window.history.pushState({ modal: true }, "");
+	  }
+
+	  window.addEventListener("popstate", manejarPopState);
+	  return () => window.removeEventListener("popstate", manejarPopState);
+	}, [modalAbierto]);
+
 
   return (
     <>
