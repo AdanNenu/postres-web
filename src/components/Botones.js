@@ -10,7 +10,7 @@ const fechaInicioModal = "2025-07-10"; // Formato YYYY-MM-DD
 const fechaFinModal = "2025-07-12";    // Formato YYYY-MM-DD
 
 //Constante
-const colapsarBotonera  = false; //Si es false, funciona con normalidad. Si es True, colapsar con la nueva logica
+const colapsarBotonera  = true; //Si es false, funciona con normalidad. Si es True, colapsar con la nueva logica
 
 const telefonoWA = "+524771658536";
 const telefonoMovil = "+524777136308";
@@ -278,7 +278,10 @@ return (
     <div className="botones-container">
       <div className="reproductor">
         {iconReport && <button onClick={abrirModalMiAnuncio}><img src={iconReport} alt="Anuncio" /></button>}
-        {iconMute && iconVol && (
+        {iconGallery1 && <button onClick={() => abrirGaleria(1)}><img src={iconGallery1} alt="Galería 1" /></button>}
+        {iconPDF1 && <button onClick={() => manejarClickPDF(1)}><img src={iconPDF1} alt="PDF 1" /></button>}
+        {iconCalendy && <button onClick={abrirCalendy}><img src={iconCalendy} alt="Calendly" /></button>}
+		{iconMute && iconVol && (
           <button onClick={onToggleMute}>
             <img src={isMuted ? iconMute : iconVol} alt="Silenciar/Sonar" />
           </button>
@@ -289,23 +292,27 @@ return (
       <div className="apps">
         {colapsarBotonera ? (
           <>
-            <div className="menu">
-              {iconMenu && (
-                <button onClick={() => setMenuAbierto(!menuAbierto)}>
-                  <img src={iconMenu} alt="Menú" />
-                </button>
-              )}
-            </div>
+          <div className="menu">
+			  {iconMenu && (
+				<button 
+				  onClick={(e) => {
+					setMenuAbierto(!menuAbierto);
+					// Remover el focus del botón después del clic
+					e.currentTarget.blur();
+				  }}
+				>
+				  <img src={iconMenu} alt="Menú" />
+				</button>
+			  )}
+			</div>
           </>
         ) : (
           <>
-            {iconGallery1 && <button onClick={() => abrirGaleria(1)}><img src={iconGallery1} alt="Galería 1" /></button>}
             {iconGallery2 && <button onClick={() => abrirGaleria(2)}><img src={iconGallery2} alt="Galería 2" /></button>}
             {iconGallery3 && <button onClick={() => abrirGaleria(3)}><img src={iconGallery3} alt="Galería 3" /></button>}
             {iconGallery4 && <button onClick={() => abrirGaleria(4)}><img src={iconGallery4} alt="Galería 4" /></button>}
             {iconGallery5 && <button onClick={() => abrirGaleria(5)}><img src={iconGallery5} alt="Galería 5" /></button>}
 
-            {iconPDF1 && <button onClick={() => manejarClickPDF(1)}><img src={iconPDF1} alt="PDF 1" /></button>}
             {iconPDF2 && <button onClick={() => manejarClickPDF(2)}><img src={iconPDF2} alt="PDF 2" /></button>}
             {iconPDF3 && <button onClick={() => manejarClickPDF(3)}><img src={iconPDF3} alt="PDF 3" /></button>}
             {iconPDF4 && <button onClick={() => manejarClickPDF(4)}><img src={iconPDF4} alt="PDF 4" /></button>}
@@ -316,7 +323,6 @@ return (
             {iconPDF9 && <button onClick={() => manejarClickPDF(9)}><img src={iconPDF9} alt="PDF 9" /></button>}
             {iconPDF10 && <button onClick={() => manejarClickPDF(10)}><img src={iconPDF10} alt="PDF 10" /></button>}
 
-            {iconCalendy && <button onClick={abrirCalendy}><img src={iconCalendy} alt="Calendly" /></button>}
             {iconGmail && <button onClick={abrirGmail}><img src={iconGmail} alt="Gmail" /></button>}
             {iconWhats && <button onClick={abrirWhatsApp}><img src={iconWhats} alt="WhatsApp" /></button>}
             {iconPhone && <button onClick={llamar}><img src={iconPhone} alt="Teléfono" /></button>}

@@ -30,14 +30,48 @@
 }
 
 .botones-container img {
-  width: 11vw;
-  height: 11vw;
+  width: 12vw;
+  height: 12vw;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
 
+/* Estilos base para el botón del menú */
+.menu button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+/* Hover para el menú con !important para mayor especificidad */
+.menu button:hover {
+  transform: scale(1.3) !important;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8)) !important;
+}
 
+/* Quitar efectos en focus y active */
+.menu button:focus,
+.menu button:active {
+  transform: scale(1) !important;
+  filter: none !important;
+  outline: none;
+}
+
+/* Para dispositivos táctiles - quitar el efecto después del toque */
+@media (hover: none) and (pointer: coarse) {
+  .menu button:active {
+    transform: scale(1.3) !important;
+  }
+  
+  .menu button {
+    transform: scale(1) !important;
+    filter: none !important;
+  }
+}
 
 .botones-container .reproductor img {
   gap: 3px;
@@ -112,8 +146,7 @@ button {
   }
   
   .botones-container .reproductor {
-  gap: 6vh;
-	
+	gap: 6vh;
   }
 
 
@@ -142,16 +175,22 @@ button {
   }
 
   .botones-container img {
-    width: 10vh;
-    height: 11vh;
+    width: 11vh;
+    height: 12vh;
     flex-shrink: 0; /* Previene que se encojan al hacer scroll */
   }
 
-  .botones-container .apps,
+  .botones-container .apps{
+	display: flex;
+    flex-direction: column;
+    align-items: right;
+    gap: 5vh; /* Espacio entre botones individuales */
+	  
+  }
   .botones-container .reproductor {
     display: flex;
     flex-direction: column;
-    align-items: right;
+    align-items: left;
     gap: 5vh; /* Espacio entre botones individuales */
   }
 }
@@ -343,7 +382,7 @@ Botonera colapsada
 .apps-colapsadas.horizontal {
   position: fixed;
   bottom: 1rem;
-  right: 12vh;
+  right: 14vh;
   left: auto;
   display: flex;
   flex-direction: row;
@@ -365,7 +404,7 @@ Botonera colapsada
   bottom: 12vh;
   right: 1rem;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: flex-end;
   gap: 0.5rem;
   overflow: visible;
@@ -429,7 +468,7 @@ Botonera colapsada
 @media screen and (orientation: landscape) and (max-width: 1024px) {
   .menu {
     position: fixed;
-    bottom: 1rem;
+    bottom: 2rem; /*Para que menu que de centrado respecto a la botonera*/
     right: 1rem;
     display: flex;
     z-index: 10000;
@@ -438,9 +477,9 @@ Botonera colapsada
   .apps-colapsadas.horizontal {
     position: fixed;
     bottom: 1rem;
-    right: 18vh;
+    right: 21vh;
     left: auto;
-    flex-direction: column;
+    flex-direction: row;
     max-height: 80vh;
     overflow-y: auto;
     gap: 0.5rem;
