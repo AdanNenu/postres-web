@@ -3,7 +3,7 @@ import "./Botones.css";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Variables configurables para abrir modal por defecto
-const abrirModalPorDefecto = true; // Cambia a false si no quieres abrirlo al inicio
+const abrirModalPorDefecto = false; // Cambia a false si no quieres abrirlo al inicio
 const tipoModalPorDefecto = "miAnuncio"; // Opciones: "miAnuncio", "galeria1", "galeria2", ..., "galeria5"
 // Rango de fechas para abrir modal por defecto
 const fechaInicioModal = "2025-07-10"; // Formato YYYY-MM-DD
@@ -289,11 +289,14 @@ return (
       <div className="apps">
         {colapsarBotonera ? (
           <>
-            {iconMenu && (
-              <button onClick={() => setMenuAbierto(!menuAbierto)}>
-                <img src={iconMenu} alt="Menú" />
-              </button>
-            )}
+         <div className="menu">
+		  {iconMenu && (
+			<button onClick={() => setMenuAbierto(!menuAbierto)}>
+			  <img src={iconMenu} alt="Menú" />
+			</button>
+		  )}
+		</div>
+
 
             <AnimatePresence>
               {menuAbierto && (
@@ -303,7 +306,7 @@ return (
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.3 }}
-                  style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", marginTop: "0.5rem" }}
+                  style={{ display: "flex",  gap: "0.5rem", marginTop: "0.5rem" }}
                 >
                   {iconGallery1 && <button onClick={() => abrirGaleria(1)}><img src={iconGallery1} alt="Galería 1" /></button>}
                   {iconGallery2 && <button onClick={() => abrirGaleria(2)}><img src={iconGallery2} alt="Galería 2" /></button>}

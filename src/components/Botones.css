@@ -151,7 +151,7 @@ button {
   .botones-container .reproductor {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: right;
     gap: 5vh; /* Espacio entre botones individuales */
   }
 }
@@ -313,16 +313,18 @@ button {
   color: white;
 }
 
-
-/*Botonera colapsada
+/*
+Botonera colapsada
 .apps-colapsadas.vertical {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
   margin-top: 0.5rem;
 }
+
+
 
 .apps-colapsadas.horizontal {
   display: flex;
@@ -338,24 +340,51 @@ button {
 
 /*Botonera colapsada Linea sin Wrap*/
 .apps-colapsadas.horizontal {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
-  overflow-x: auto;
+
+  overflow-x: visible;
   white-space: nowrap;
   padding: 0.5rem;
-  scrollbar-width: thin; /* para Firefox */
-  -webkit-overflow-scrolling: touch; /* suave en móviles */
+
+  scrollbar-width: thin; /* Firefox */
+  -webkit-overflow-scrolling: touch; /* iOS */
+  z-index: 999;
 }
 
-
-.apps-colapsadas.horizontal {
+.apps-colapsadas.vertical {
+  position: absolute;
+  bottom: 10vh; /* ajusta según necesidad */
+  right: 1rem; /* <-- alineación a la derecha */
   display: flex;
   flex-direction: column;
+  align-items: flex-end; /* <-- alinea los botones hacia la derecha */
   gap: 0.5rem;
-  overflow-x: auto;
+  overflow-y: visible;
   white-space: nowrap;
-  padding: 0.5rem;
-  scrollbar-width: thin; /* para Firefox */
-  -webkit-overflow-scrolling: touch; /* suave en móviles */
+  margin-top: 0.5rem;
+  z-index: 999;
 }
+
+
+
+/*Boon Menu Colapsa*/
+.menu {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+.menu button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
