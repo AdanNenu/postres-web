@@ -379,6 +379,7 @@ Botonera colapsada
   bottom: 1rem;
   right: 1rem;
   z-index: 1000;
+  pointer-events: auto;
 }
 
 .menu button {
@@ -387,4 +388,24 @@ Botonera colapsada
   cursor: pointer;
 }
 
+/* 📱 Portrait (modo vertical en celulares y tablets) */
+@media screen and (orientation: portrait) {
+  .menu {
+    bottom: 1rem;
+    right: 1rem;
+    display: block;
+    z-index: 1000;
+  }
+}
 
+
+/* 📺 Landscape (modo horizontal en celulares/tablets) */
+@media screen and (orientation: landscape) {
+  .menu {
+    position: relative;     /* ← importante fixed */
+    bottom: 1rem;        /* espacio desde abajo */
+    right: 0rem;         /* espacio desde la derecha */
+    display: flex;       /* asegúrate que sea visible */
+    z-index: 1000;
+  }
+}
