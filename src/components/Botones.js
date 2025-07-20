@@ -10,7 +10,7 @@ const fechaInicioModal = "2025-07-10"; // Formato YYYY-MM-DD
 const fechaFinModal = "2025-07-12";    // Formato YYYY-MM-DD
 
 //Constante
-const colapsarBotonera  = true; //Si es false, funciona con normalidad. Si es True, colapsar con la nueva logica
+const colapsarBotonera  = false; //Si es false, funciona con normalidad. Si es True, colapsar con la nueva logica
 
 const telefonoWA = "+524771658536";
 const telefonoMovil = "+524777136308";

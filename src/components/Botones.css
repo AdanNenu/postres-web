@@ -119,7 +119,7 @@ button {
 
   .botones-container .apps {
 	gap: 0vh;
-	width: 10vh;
+	width: 7vh;
   }
 }
 
@@ -346,7 +346,7 @@ Botonera colapsada
   right: 12vh;
   left: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.6rem;
   white-space: nowrap;
   padding: 0.5rem;
