@@ -114,13 +114,13 @@ button {
   .botones-container .reproductor {
   gap: 6vh;
 	
-}
+  }
 
 
-.botones-container .apps {
-  gap: 6vh;
-
-}
+  .botones-container .apps {
+	gap: 0vh;
+	width: 10vh;
+  }
 }
 
 /* Modifica Botonera celulares Landscape */
@@ -339,36 +339,42 @@ Botonera colapsada
 
 
 /*Botonera colapsada Linea sin Wrap*/
+/*Botonera colapsada Linea sin Wrap*/
 .apps-colapsadas.horizontal {
-  position: absolute;
+  position: fixed;
   bottom: 1rem;
-  right: 1rem;
-
-  display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-
-  overflow-x: visible;
-  white-space: nowrap;
-  padding: 0.5rem;
-
-  scrollbar-width: thin; /* Firefox */
-  -webkit-overflow-scrolling: touch; /* iOS */
-  z-index: 999;
-}
-
-.apps-colapsadas.vertical {
-  position: absolute;
-  bottom: 10vh; /* ajusta según necesidad */
-  right: 1rem; /* <-- alineación a la derecha */
+  right: 12vh;
+  left: auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-end; /* <-- alinea los botones hacia la derecha */
+  gap: 0.6rem;
+  white-space: nowrap;
+  padding: 0.5rem;
+  overflow: visible;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  pointer-events: auto;
+  align-items: center;
+}
+
+
+
+.apps-colapsadas.vertical {
+  position: fixed;
+  bottom: 12vh;
+  right: 1rem;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
   gap: 0.5rem;
-  overflow-y: visible;
+  overflow: visible;
   white-space: nowrap;
   margin-top: 0.5rem;
-  z-index: 999;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 0.5rem;
 }
 
 
@@ -378,7 +384,7 @@ Botonera colapsada
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-  z-index: 1000;
+  z-index: 10000;
   pointer-events: auto;
 }
 
@@ -394,18 +400,83 @@ Botonera colapsada
     bottom: 1rem;
     right: 1rem;
     display: block;
-    z-index: 1000;
+    z-index: 10000;
   }
+  
 }
 
 
-/* 📺 Landscape (modo horizontal en celulares/tablets) */
-@media screen and (orientation: landscape) {
+
+.apps-colapsadas button {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  border: none;
+}
+
+.apps-colapsadas img {
+  width: 5vh;
+  height: 5vh;
+  object-fit: contain;
+  background: transparent;
+}
+
+
+
+
+/* Móviles y tablets (hasta 1024px) */
+/* Móviles y tablets (hasta 1024px) */
+@media screen and (orientation: landscape) and (max-width: 1024px) {
   .menu {
-    position: relative;     /* ← importante fixed */
-    bottom: 1rem;        /* espacio desde abajo */
-    right: 0rem;         /* espacio desde la derecha */
-    display: flex;       /* asegúrate que sea visible */
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    z-index: 10000;
+  }
+  
+  .apps-colapsadas.horizontal {
+    position: fixed;
+    bottom: 1rem;
+    right: 18vh;
+    left: auto;
+    flex-direction: column;
+    max-height: 80vh;
+    overflow-y: auto;
+    gap: 0.5rem;
+    padding: 0.8rem;
+    align-items: center;
+  }
+  
+  .apps-colapsadas img {
+  width: 10vh;
+  height: 11vh;
+  }
+}
+
+/* Escritorio (desde 1025px) */
+@media screen and (orientation: landscape) and (min-width: 1025px) {
+  .menu {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    z-index: 10000;
+  }
+
+  .botones-container {
+    position: fixed;
+    top: 50%;
+    right: 0rem;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    padding: 1rem;
+    border-radius: 12px;
     z-index: 1000;
   }
 }
+

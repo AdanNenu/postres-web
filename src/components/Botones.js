@@ -10,7 +10,7 @@ const fechaInicioModal = "2025-07-10"; // Formato YYYY-MM-DD
 const fechaFinModal = "2025-07-12";    // Formato YYYY-MM-DD
 
 //Constante
-const colapsarBotonera  = false; //Si es false, funciona con normalidad. Si es True, colapsar con la nueva logica
+const colapsarBotonera  = true; //Si es false, funciona con normalidad. Si es True, colapsar con la nueva logica
 
 const telefonoWA = "+524771658536";
 const telefonoMovil = "+524777136308";
@@ -289,51 +289,13 @@ return (
       <div className="apps">
         {colapsarBotonera ? (
           <>
-         <div className="menu">
-		  {iconMenu && (
-			<button onClick={() => setMenuAbierto(!menuAbierto)}>
-			  <img src={iconMenu} alt="Menú" />
-			</button>
-		  )}
-		</div>
-
-
-            <AnimatePresence>
-              {menuAbierto && (
-                <motion.div
-				className={`apps-colapsadas ${esVertical ? "vertical" : "horizontal"}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{ duration: 0.3 }}
-                  style={{ display: "flex",  gap: "0.5rem", marginTop: "0.5rem" }}
-                >
-                  {iconGallery1 && <button onClick={() => abrirGaleria(1)}><img src={iconGallery1} alt="Galería 1" /></button>}
-                  {iconGallery2 && <button onClick={() => abrirGaleria(2)}><img src={iconGallery2} alt="Galería 2" /></button>}
-                  {iconGallery3 && <button onClick={() => abrirGaleria(3)}><img src={iconGallery3} alt="Galería 3" /></button>}
-                  {iconGallery4 && <button onClick={() => abrirGaleria(4)}><img src={iconGallery4} alt="Galería 4" /></button>}
-                  {iconGallery5 && <button onClick={() => abrirGaleria(5)}><img src={iconGallery5} alt="Galería 5" /></button>}
-
-                  {iconPDF1 && <button onClick={() => manejarClickPDF(1)}><img src={iconPDF1} alt="PDF 1" /></button>}
-                  {iconPDF2 && <button onClick={() => manejarClickPDF(2)}><img src={iconPDF2} alt="PDF 2" /></button>}
-                  {iconPDF3 && <button onClick={() => manejarClickPDF(3)}><img src={iconPDF3} alt="PDF 3" /></button>}
-                  {iconPDF4 && <button onClick={() => manejarClickPDF(4)}><img src={iconPDF4} alt="PDF 4" /></button>}
-                  {iconPDF5 && <button onClick={() => manejarClickPDF(5)}><img src={iconPDF5} alt="PDF 5" /></button>}
-                  {iconPDF6 && <button onClick={() => manejarClickPDF(6)}><img src={iconPDF6} alt="PDF 6" /></button>}
-                  {iconPDF7 && <button onClick={() => manejarClickPDF(7)}><img src={iconPDF7} alt="PDF 7" /></button>}
-                  {iconPDF8 && <button onClick={() => manejarClickPDF(8)}><img src={iconPDF8} alt="PDF 8" /></button>}
-                  {iconPDF9 && <button onClick={() => manejarClickPDF(9)}><img src={iconPDF9} alt="PDF 9" /></button>}
-                  {iconPDF10 && <button onClick={() => manejarClickPDF(10)}><img src={iconPDF10} alt="PDF 10" /></button>}
-
-                  {iconCalendy && <button onClick={abrirCalendy}><img src={iconCalendy} alt="Calendly" /></button>}
-                  {iconGmail && <button onClick={abrirGmail}><img src={iconGmail} alt="Gmail" /></button>}
-                  {iconWhats && <button onClick={abrirWhatsApp}><img src={iconWhats} alt="WhatsApp" /></button>}
-                  {iconPhone && <button onClick={llamar}><img src={iconPhone} alt="Teléfono" /></button>}
-                  {iconMaps && <button onClick={abrirMaps}><img src={iconMaps} alt="Ubicación" /></button>}
-                  {iconShare && <button onClick={compartir}><img src={iconShare} alt="Compartir" /></button>}
-                </motion.div>
+            <div className="menu">
+              {iconMenu && (
+                <button onClick={() => setMenuAbierto(!menuAbierto)}>
+                  <img src={iconMenu} alt="Menú" />
+                </button>
               )}
-            </AnimatePresence>
+            </div>
           </>
         ) : (
           <>
@@ -365,6 +327,46 @@ return (
       </div>
     </div>
 
+    {/* AQUÍ VAN LOS BOTONES COLAPSADOS - FUERA DEL CONTENEDOR */}
+    {colapsarBotonera && (
+      <AnimatePresence>
+        {menuAbierto && (
+          <motion.div
+            className={`apps-colapsadas ${esVertical ? "vertical" : "horizontal"}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
+            style={{ display: "flex",  gap: "0.5rem", marginTop: "0.5rem" }}
+          >
+            {iconGallery1 && <button onClick={() => abrirGaleria(1)}><img src={iconGallery1} alt="Galería 1" /></button>}
+            {iconGallery2 && <button onClick={() => abrirGaleria(2)}><img src={iconGallery2} alt="Galería 2" /></button>}
+            {iconGallery3 && <button onClick={() => abrirGaleria(3)}><img src={iconGallery3} alt="Galería 3" /></button>}
+            {iconGallery4 && <button onClick={() => abrirGaleria(4)}><img src={iconGallery4} alt="Galería 4" /></button>}
+            {iconGallery5 && <button onClick={() => abrirGaleria(5)}><img src={iconGallery5} alt="Galería 5" /></button>}
+
+            {iconPDF1 && <button onClick={() => manejarClickPDF(1)}><img src={iconPDF1} alt="PDF 1" /></button>}
+            {iconPDF2 && <button onClick={() => manejarClickPDF(2)}><img src={iconPDF2} alt="PDF 2" /></button>}
+            {iconPDF3 && <button onClick={() => manejarClickPDF(3)}><img src={iconPDF3} alt="PDF 3" /></button>}
+            {iconPDF4 && <button onClick={() => manejarClickPDF(4)}><img src={iconPDF4} alt="PDF 4" /></button>}
+            {iconPDF5 && <button onClick={() => manejarClickPDF(5)}><img src={iconPDF5} alt="PDF 5" /></button>}
+            {iconPDF6 && <button onClick={() => manejarClickPDF(6)}><img src={iconPDF6} alt="PDF 6" /></button>}
+            {iconPDF7 && <button onClick={() => manejarClickPDF(7)}><img src={iconPDF7} alt="PDF 7" /></button>}
+            {iconPDF8 && <button onClick={() => manejarClickPDF(8)}><img src={iconPDF8} alt="PDF 8" /></button>}
+            {iconPDF9 && <button onClick={() => manejarClickPDF(9)}><img src={iconPDF9} alt="PDF 9" /></button>}
+            {iconPDF10 && <button onClick={() => manejarClickPDF(10)}><img src={iconPDF10} alt="PDF 10" /></button>}
+
+            {iconCalendy && <button onClick={abrirCalendy}><img src={iconCalendy} alt="Calendly" /></button>}
+            {iconGmail && <button onClick={abrirGmail}><img src={iconGmail} alt="Gmail" /></button>}
+            {iconWhats && <button onClick={abrirWhatsApp}><img src={iconWhats} alt="WhatsApp" /></button>}
+            {iconPhone && <button onClick={llamar}><img src={iconPhone} alt="Teléfono" /></button>}
+            {iconMaps && <button onClick={abrirMaps}><img src={iconMaps} alt="Ubicación" /></button>}
+            {iconShare && <button onClick={compartir}><img src={iconShare} alt="Compartir" /></button>}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    )}
+
     {modalAbierto && (
       <div className="modal-overlay" onClick={() => setModalAbierto(false)}>
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -395,7 +397,6 @@ return (
     )}
   </>
 );
-
 };
 
 export default Botones;
