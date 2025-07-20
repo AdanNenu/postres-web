@@ -312,3 +312,50 @@ button {
   cursor: pointer;
   color: white;
 }
+
+
+/*Botonera colapsada
+.apps-colapsadas.vertical {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.apps-colapsadas.horizontal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  max-height: 80vh;
+  overflow-y: auto;
+  margin-top: 0.5rem;
+}
+*/
+
+
+/*Botonera colapsada Linea sin Wrap*/
+.apps-colapsadas.horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0.5rem;
+  scrollbar-width: thin; /* para Firefox */
+  -webkit-overflow-scrolling: touch; /* suave en móviles */
+}
+
+
+.apps-colapsadas.horizontal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0.5rem;
+  scrollbar-width: thin; /* para Firefox */
+  -webkit-overflow-scrolling: touch; /* suave en móviles */
+}
