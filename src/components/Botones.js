@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 // Variables configurables para abrir modal por defecto
 const abrirModalPorDefecto = false; // Cambia a false si no quieres abrirlo al inicio
 const tipoModalPorDefecto = "miAnuncio"; // Opciones: "miAnuncio", "galeria1", "galeria2", ..., "galeria5"
-// Rango de fechas para abrir modal por defecto
+// Rango de fechas para abrir modal por defecto 
 const fechaInicioModal = "2025-07-10"; // Formato YYYY-MM-DD
 const fechaFinModal = "2025-07-12";    // Formato YYYY-MM-DD
 
