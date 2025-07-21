@@ -272,6 +272,35 @@ const Botones = ({ onPlayPause, onRewind, onForward, onToggleMute, isMuted, isPl
 	  return () => window.removeEventListener("popstate", manejarPopState);
 	}, [modalAbierto]);
 
+	/*Controlar tamño del menu*/
+	const toggleMenu = () => {
+	  setMenuAbierto((prev) => !prev);
+
+	  const botonMenu = document.querySelector(".menu");
+	  if (botonMenu) {
+		botonMenu.classList.add("boton-reset-animacion");
+
+		setTimeout(() => {
+		  botonMenu.classList.remove("boton-reset-animacion");
+		}, 300); // mismo tiempo que el transition
+	  }
+	};
+
+
+	useEffect(() => {
+	  const manejarClickFuera = (e) => {
+		const boton = document.querySelector('.menu button');
+		if (boton && !boton.contains(e.target)) {
+		  setMenuAbierto(false);
+		}
+	  };
+
+	  document.addEventListener('click', manejarClickFuera);
+	  return () => {
+		document.removeEventListener('click', manejarClickFuera);
+	  };
+	}, []);
+
 
 return (
   <>
@@ -279,6 +308,7 @@ return (
       <div className="reproductor">
         {iconReport && <button onClick={abrirModalMiAnuncio}><img src={iconReport} alt="Anuncio" /></button>}
         {iconGallery1 && <button onClick={() => abrirGaleria(1)}><img src={iconGallery1} alt="Galería 1" /></button>}
+        {iconPDF2 && <button onClick={() => manejarClickPDF(2)}><img src={iconPDF2} alt="PDF 2" /></button>}
         {iconPDF1 && <button onClick={() => manejarClickPDF(1)}><img src={iconPDF1} alt="PDF 1" /></button>}
         {iconCalendy && <button onClick={abrirCalendy}><img src={iconCalendy} alt="Calendly" /></button>}
 		{iconMute && iconVol && (
@@ -294,15 +324,17 @@ return (
           <>
           <div className="menu">
 			  {iconMenu && (
-				<button 
-				  onClick={(e) => {
-					setMenuAbierto(!menuAbierto);
-					// Remover el focus del botón después del clic
-					e.currentTarget.blur();
-				  }}
-				>
-				  <img src={iconMenu} alt="Menú" />
-				</button>
+<button
+  className={menuAbierto ? 'expandido' : 'contraido'}
+  onClick={(e) => {
+    // Alterna el estado de menú
+    setMenuAbierto(prev => !prev);
+  }}
+>
+  <img src={iconMenu} alt="Menú" />
+</button>
+
+
 			  )}
 			</div>
           </>
@@ -313,7 +345,6 @@ return (
             {iconGallery4 && <button onClick={() => abrirGaleria(4)}><img src={iconGallery4} alt="Galería 4" /></button>}
             {iconGallery5 && <button onClick={() => abrirGaleria(5)}><img src={iconGallery5} alt="Galería 5" /></button>}
 
-            {iconPDF2 && <button onClick={() => manejarClickPDF(2)}><img src={iconPDF2} alt="PDF 2" /></button>}
             {iconPDF3 && <button onClick={() => manejarClickPDF(3)}><img src={iconPDF3} alt="PDF 3" /></button>}
             {iconPDF4 && <button onClick={() => manejarClickPDF(4)}><img src={iconPDF4} alt="PDF 4" /></button>}
             {iconPDF5 && <button onClick={() => manejarClickPDF(5)}><img src={iconPDF5} alt="PDF 5" /></button>}
@@ -352,7 +383,7 @@ return (
             {iconGallery5 && <button onClick={() => abrirGaleria(5)}><img src={iconGallery5} alt="Galería 5" /></button>}
 
 			{/*{iconPDF1 && <button onClick={() => manejarClickPDF(1)}><img src={iconPDF1} alt="PDF 1" /></button>}*/}
-            {iconPDF2 && <button onClick={() => manejarClickPDF(2)}><img src={iconPDF2} alt="PDF 2" /></button>}
+			{/*{iconPDF2 && <button onClick={() => manejarClickPDF(2)}><img src={iconPDF2} alt="PDF 2" /></button>}*/}
             {iconPDF3 && <button onClick={() => manejarClickPDF(3)}><img src={iconPDF3} alt="PDF 3" /></button>}
             {iconPDF4 && <button onClick={() => manejarClickPDF(4)}><img src={iconPDF4} alt="PDF 4" /></button>}
             {iconPDF5 && <button onClick={() => manejarClickPDF(5)}><img src={iconPDF5} alt="PDF 5" /></button>}
