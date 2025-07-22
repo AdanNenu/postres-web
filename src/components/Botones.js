@@ -12,13 +12,23 @@ const fechaFinModal = "2025-07-12";    // Formato YYYY-MM-DD
 //Constante
 const colapsarBotonera  = true; //Si es false, funciona con normalidad. Si es True, colapsar con la nueva logica
 
-const telefonoWA = "+524771658536";
-const telefonoMovil = "+524777136308";
-const correoGmail = "eva.mendez@llompart.com.mx";
-const urlMaps = "https://maps.app.goo.gl/nDsRvs5n6bFnrjTM7";
-const urlCalendy = "https://llompart.com.mx/pages/regalos-corporativos";
+const telefonoWA = "+524772547348";
+const telefonoMovil = "+52477";
+const correoGmail = "";
+const urlMaps = "";
+const urlCalendy = "";
+const url1 = "";//Basica
+const url2 = "";
+const url3 = "";
+const url4 = "";
+const url5 = "";
+const url6 = "";
+const url7 = "";
+const url8 = "";
+const url9 = "";
+const url10 = "";
 const mensajeWhats = encodeURIComponent("¡Hola!");
-const mensajeCompartir = encodeURIComponent("Actual y genuino como tú...");
+const mensajeCompartir = encodeURIComponent("¡Mira!, te puede interesar");
 const mensajeGmail = encodeURIComponent("¡Hola!");
 
 // Cargar imágenes sin que truene si no existen
@@ -26,6 +36,8 @@ let iconRewind, iconPlay, iconPause, iconForward, iconMute, iconVol, iconMenu;
 let iconGmail, iconWhats, iconMaps, iconPhone, iconShare, iconCalendy, iconReport;
 let iconGallery1, iconGallery2, iconGallery3, iconGallery4, iconGallery5;
 let iconPDF1, iconPDF2, iconPDF3, iconPDF4, iconPDF5, iconPDF6, iconPDF7, iconPDF8, iconPDF9, iconPDF10;
+let iconurl1, iconurl2, iconurl3, iconurl4, iconurl5, iconurl6, iconurl7, iconurl8, iconurl9, iconurl10;
+
 
 try { iconRewind = require('../assets/preview.png'); } catch {}
 try { iconPlay = require('../assets/play.png'); } catch {}
@@ -57,6 +69,18 @@ try { iconPDF7 = require('../assets/pdf7.png'); } catch {}
 try { iconPDF8 = require('../assets/pdf8.png'); } catch {}
 try { iconPDF9 = require('../assets/pdf9.png'); } catch {}
 try { iconPDF10 = require('../assets/pdf10.png'); } catch {}
+
+
+try { iconurl1 = require('../assets/url1.png'); } catch {}
+try { iconurl2 = require('../assets/url2.png'); } catch {}
+try { iconurl3 = require('../assets/url3.png'); } catch {}
+try { iconurl4 = require('../assets/url4.png'); } catch {}
+try { iconurl5 = require('../assets/url5.png'); } catch {}
+try { iconurl6 = require('../assets/url6.png'); } catch {}
+try { iconurl7 = require('../assets/url7.png'); } catch {}
+try { iconurl8 = require('../assets/url8.png'); } catch {}
+try { iconurl9 = require('../assets/url9.png'); } catch {}
+try { iconurl10 = require('../assets/url10.png'); } catch {}
 
 try { iconMenu = require('../assets/menu.png'); } catch {}
 
@@ -113,7 +137,7 @@ const Botones = ({ onPlayPause, onRewind, onForward, onToggleMute, isMuted, isPl
 
   const compartir = async () => {
     const shareData = {
-      title: "Ventas - Llompart",
+      title: "Tu negocio en línea.",
       text: decodeURIComponent(mensajeCompartir),
       url: window.location.href,
     };
@@ -130,6 +154,37 @@ const Botones = ({ onPlayPause, onRewind, onForward, onToggleMute, isMuted, isPl
 
   const abrirCalendy = () => {
     window.open(urlCalendy, "_blank");
+  };
+  
+    const abrirURL1 = () => {
+    window.open(url1, "_blank");
+  };
+      const abrirURL2 = () => {
+    window.open(url2, "_blank");
+  };
+      const abrirURL3 = () => {
+    window.open(url3, "_blank");
+  };
+      const abrirURL4 = () => {
+    window.open(url4, "_blank");
+  };
+      const abrirURL5 = () => {
+    window.open(url5, "_blank");
+  };
+      const abrirURL6 = () => {
+    window.open(url6, "_blank");
+  };
+      const abrirURL7 = () => {
+    window.open(url7, "_blank");
+  };
+      const abrirURL8 = () => {
+    window.open(url8, "_blank");
+  };
+      const abrirURL9 = () => {
+    window.open(url9, "_blank");
+  };
+      const abrirURL10 = () => {
+    window.open(url10, "_blank");
   };
 
 	const abrirModalMiAnuncio = () => {
@@ -255,8 +310,9 @@ const Botones = ({ onPlayPause, onRewind, onForward, onToggleMute, isMuted, isPl
 	  }
 	}, [esVertical, urlMiAnuncio, urlsGalerias, tipoActualModal, modalAbierto]);
 	
-	// Manejar historial
-	useEffect(() => {
+
+//*Manejar historial
+useEffect(() => {
 	  const manejarPopState = (event) => {
 		if (modalAbierto) {
 		  setModalAbierto(false);
@@ -271,6 +327,9 @@ const Botones = ({ onPlayPause, onRewind, onForward, onToggleMute, isMuted, isPl
 	  window.addEventListener("popstate", manejarPopState);
 	  return () => window.removeEventListener("popstate", manejarPopState);
 	}, [modalAbierto]);
+
+
+
 
 	/*Controlar tamño del menu*/
 	const toggleMenu = () => {
@@ -300,6 +359,9 @@ const Botones = ({ onPlayPause, onRewind, onForward, onToggleMute, isMuted, isPl
 		document.removeEventListener('click', manejarClickFuera);
 	  };
 	}, []);
+	
+	
+	
 
 
 return (
@@ -308,9 +370,8 @@ return (
       <div className="reproductor">
         {iconReport && <button onClick={abrirModalMiAnuncio}><img src={iconReport} alt="Anuncio" /></button>}
         {iconGallery1 && <button onClick={() => abrirGaleria(1)}><img src={iconGallery1} alt="Galería 1" /></button>}
-        {iconPDF2 && <button onClick={() => manejarClickPDF(2)}><img src={iconPDF2} alt="PDF 2" /></button>}
-        {iconPDF1 && <button onClick={() => manejarClickPDF(1)}><img src={iconPDF1} alt="PDF 1" /></button>}
-        {iconCalendy && <button onClick={abrirCalendy}><img src={iconCalendy} alt="Calendly" /></button>}
+        {iconWhats && <button onClick={abrirWhatsApp}><img src={iconWhats} alt="WhatsApp" /></button>}
+
 		{iconMute && iconVol && (
           <button onClick={onToggleMute}>
             <img src={isMuted ? iconMute : iconVol} alt="Silenciar/Sonar" />
@@ -345,6 +406,8 @@ return (
             {iconGallery4 && <button onClick={() => abrirGaleria(4)}><img src={iconGallery4} alt="Galería 4" /></button>}
             {iconGallery5 && <button onClick={() => abrirGaleria(5)}><img src={iconGallery5} alt="Galería 5" /></button>}
 
+            {iconPDF1 && <button onClick={() => manejarClickPDF(1)}><img src={iconPDF1} alt="PDF 1" /></button>}   
+	        {iconPDF2 && <button onClick={() => manejarClickPDF(2)}><img src={iconPDF2} alt="PDF 2" /></button>}
             {iconPDF3 && <button onClick={() => manejarClickPDF(3)}><img src={iconPDF3} alt="PDF 3" /></button>}
             {iconPDF4 && <button onClick={() => manejarClickPDF(4)}><img src={iconPDF4} alt="PDF 4" /></button>}
             {iconPDF5 && <button onClick={() => manejarClickPDF(5)}><img src={iconPDF5} alt="PDF 5" /></button>}
@@ -353,9 +416,22 @@ return (
             {iconPDF8 && <button onClick={() => manejarClickPDF(8)}><img src={iconPDF8} alt="PDF 8" /></button>}
             {iconPDF9 && <button onClick={() => manejarClickPDF(9)}><img src={iconPDF9} alt="PDF 9" /></button>}
             {iconPDF10 && <button onClick={() => manejarClickPDF(10)}><img src={iconPDF10} alt="PDF 10" /></button>}
-
+			
+			
+			{iconurl1 && <button onClick={() => abrirURL1()}><img src={iconurl1} alt="URL 1" /></button>}
+            {iconurl2 && <button onClick={() => abrirURL2()}><img src={iconurl2} alt="URL 2" /></button>}
+            {iconurl3 && <button onClick={() => abrirURL3()}><img src={iconurl3} alt="URL 3" /></button>}
+            {iconurl4 && <button onClick={() => abrirURL4()}><img src={iconurl4} alt="URL 4" /></button>}
+            {iconurl5 && <button onClick={() => abrirURL5()}><img src={iconurl5} alt="URL 5" /></button>}
+            {iconurl6 && <button onClick={() => abrirURL6()}><img src={iconurl6} alt="URL 6" /></button>}
+            {iconurl7 && <button onClick={() => abrirURL7()}><img src={iconurl7} alt="URL 7" /></button>}
+            {iconurl8 && <button onClick={() => abrirURL8()}><img src={iconurl8} alt="URL 8" /></button>}
+			{iconurl9 && <button onClick={() => abrirURL9()}><img src={iconurl9} alt="URL 9" /></button>}
+			{iconurl10 && <button onClick={() => abrirURL10()}><img src={iconurl10} alt="URL 10" /></button>}
+			
+			
+	        {iconCalendy && <button onClick={abrirCalendy}><img src={iconCalendy} alt="Calendly" /></button>}
             {iconGmail && <button onClick={abrirGmail}><img src={iconGmail} alt="Gmail" /></button>}
-            {iconWhats && <button onClick={abrirWhatsApp}><img src={iconWhats} alt="WhatsApp" /></button>}
             {iconPhone && <button onClick={llamar}><img src={iconPhone} alt="Teléfono" /></button>}
             {iconMaps && <button onClick={abrirMaps}><img src={iconMaps} alt="Ubicación" /></button>}
             {iconShare && <button onClick={compartir}><img src={iconShare} alt="Compartir" /></button>}
@@ -392,10 +468,22 @@ return (
             {iconPDF8 && <button onClick={() => manejarClickPDF(8)}><img src={iconPDF8} alt="PDF 8" /></button>}
             {iconPDF9 && <button onClick={() => manejarClickPDF(9)}><img src={iconPDF9} alt="PDF 9" /></button>}
             {iconPDF10 && <button onClick={() => manejarClickPDF(10)}><img src={iconPDF10} alt="PDF 10" /></button>}
+			
+			{/*Botones para las URL*/}
+			{iconurl1 && <button onClick={() => abrirURL1()}><img src={iconurl1} alt="URL 1" /></button>}
+            {iconurl2 && <button onClick={() => abrirURL2()}><img src={iconurl2} alt="URL 2" /></button>}
+            {iconurl3 && <button onClick={() => abrirURL3()}><img src={iconurl3} alt="URL 3" /></button>}
+            {iconurl4 && <button onClick={() => abrirURL4()}><img src={iconurl4} alt="URL 4" /></button>}
+            {iconurl5 && <button onClick={() => abrirURL5()}><img src={iconurl5} alt="URL 5" /></button>}
+            {iconurl6 && <button onClick={() => abrirURL6()}><img src={iconurl6} alt="URL 6" /></button>}
+            {iconurl7 && <button onClick={() => abrirURL7()}><img src={iconurl7} alt="URL 7" /></button>}
+            {iconurl8 && <button onClick={() => abrirURL8()}><img src={iconurl8} alt="URL 8" /></button>}
+			{iconurl9 && <button onClick={() => abrirURL9()}><img src={iconurl9} alt="URL 9" /></button>}
+			{iconurl10 && <button onClick={() => abrirURL10()}><img src={iconurl10} alt="URL 10" /></button>}
 
 			{/*{iconCalendy && <button onClick={abrirCalendy}><img src={iconCalendy} alt="Calendly" /></button>}*/}
             {iconGmail && <button onClick={abrirGmail}><img src={iconGmail} alt="Gmail" /></button>}
-            {iconWhats && <button onClick={abrirWhatsApp}><img src={iconWhats} alt="WhatsApp" /></button>}
+			{/*{iconWhats && <button onClick={abrirWhatsApp}><img src={iconWhats} alt="WhatsApp" /></button>}*/}
             {iconPhone && <button onClick={llamar}><img src={iconPhone} alt="Teléfono" /></button>}
             {iconMaps && <button onClick={abrirMaps}><img src={iconMaps} alt="Ubicación" /></button>}
             {iconShare && <button onClick={compartir}><img src={iconShare} alt="Compartir" /></button>}
@@ -404,25 +492,37 @@ return (
       </AnimatePresence>
     )}
 
-    {modalAbierto && (
-      <div className="modal-overlay" onClick={() => setModalAbierto(false)}>
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          <button className="cerrar-modal" onClick={() => { setModalAbierto(false); setTipoActualModal(null); }}>X</button>
-          <div style={{
-            width: "100%", height: 0, paddingTop: esVertical ? "177.7778%" : "56.25%",
-            overflow: "hidden", borderRadius: "8px", position: "relative"
-          }}>
-            <iframe
-              key={galeriaActual}
-              loading="lazy"
-              style={{ position: "absolute", width: "100%", height: "100%", top: 0, left: 0, border: "none" }}
-              src={galeriaActual}
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      </div>
-    )}
+<>
+  {modalAbierto && (
+    <div className="modal-overlay" onClick={() => setModalAbierto(false)}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+	  
+	  
+		<div style={{
+		  width: "100%", height: 0, paddingTop: esVertical ? "177.7778%" : "56.25%",
+		  overflow: "hidden", borderRadius: "8px", position: "relative"
+		}}>
+		  <iframe
+			key={galeriaActual}
+			loading="lazy"
+			style={{ position: "absolute", width: "100%", height: "100%", top: 0, left: 0, border: "none" }}
+			src={galeriaActual}
+			allowFullScreen
+		  ></iframe>
+
+		  {/* ✅ Botón superpuesto */}
+		  <button className="boton-aceptar-superpuesto" onClick={() => {
+			window.history.back(); // esto automáticamente activa el cierre desde useEffect
+		  }}>
+			Aceptar
+		  </button>
+		</div>
+
+			  </div>
+			</div>
+		  )}
+		</>
+
 
     {miniModal !== null && (
       <div className="modal-pdf">
