@@ -1,32 +1,35 @@
-import React, { useState, useEffect, useRef } from "react";
+ysimport React, { useState, useEffect, useRef } from "react";
 import "./Botones.css";
 import { motion, AnimatePresence } from "framer-motion";
 
 // Variables configurables para abrir modal por defecto
 const abrirModalPorDefecto = false; // Cambia a false si no quieres abrirlo al inicio
-const tipoModalPorDefecto = "miAnuncio"; // Opciones: "miAnuncio", "galeria1", "galeria2", ..., "galeria5"
+const tipoModalPorDefecto = "galeria1"; // Opciones: "miAnuncio", "galeria1", "galeria2", ..., "galeria5". Galeria 5 es para lanzar anuncios.
 // Rango de fechas para abrir modal por defecto 
 const fechaInicioModal = "2025-07-10"; // Formato YYYY-MM-DD
-const fechaFinModal = "2025-07-12";    // Formato YYYY-MM-DD
+const fechaFinModal = "2025-07-30";    // Formato YYYY-MM-DD
 
 //Constante
 const colapsarBotonera  = true; //Si es false, funciona con normalidad. Si es True, colapsar con la nueva logica
+//Manejar boon de modal
+const miSitioWeb = "https://www.yotepromociono.com";
+
 
 const telefonoWA = "+524772547348";
 const telefonoMovil = "+52477";
 const correoGmail = "";
 const urlMaps = "";
 const urlCalendy = "";
-const url1 = "";//Basica
-const url2 = "";
-const url3 = "";
-const url4 = "";
-const url5 = "";
-const url6 = "";
-const url7 = "";
-const url8 = "";
+const url1 = "https://scan.page/p/0ZHqkk";//BussinessCard
+const url2 = "https://scan.page/p/Y9lX8w"; //Pdf Básico
+const url3 = "https://scan.page/p/EnBlI4";//Galeria de Imágenes
+const url4 = "https://yotepromociono.store";//Pdf varios
+const url5 = "https://yotepongoonline.site";//Tarjeta animada básica
+const url6 = "https://qr.pro/i/p/6852fceb649eb";//Menu básico
+const url7 = "https://yoteinvito.store";//Mariscos yoteinvio.store
+const url8 = "https://jochosmiguel.store";
 const url9 = "";
-const url10 = "";
+const url10 = "https://barberstylepostre.site";
 const mensajeWhats = encodeURIComponent("¡Hola!");
 const mensajeCompartir = encodeURIComponent("¡Mira!, te puede interesar");
 const mensajeGmail = encodeURIComponent("¡Hola!");
@@ -95,6 +98,12 @@ const Botones = ({ onPlayPause, onRewind, onForward, onToggleMute, isMuted, isPl
   const modalYaAbiertoRef = useRef(false);
   const [tipoActualModal, setTipoActualModal] = useState(null);
 
+//Controlar fechas MODAL
+  const fechaActual = new Date();
+  const fechaInicio = new Date(fechaInicioModal);
+  const fechaFin = new Date(fechaFinModal);
+  
+  
   const [miniModal, setMiniModal] = useState(null);
 
   const manejarClickPDF = (numero) => {
@@ -217,16 +226,22 @@ const Botones = ({ onPlayPause, onRewind, onForward, onToggleMute, isMuted, isPl
           setUrlMiAnuncio(nuevaUrlMiAnuncio);
 
           const defaults = {
-            V: { galeria1: "https://www.canva.com/design/DAGtBcGCfzQ/_9MyCl-Hw6AvZGZZNbPqWg/view?embed" },
+            V: { galeria1: "https://www.canva.com/design/DAGuAG_Ldtw/ejX6QhjQKTmM3bkP7JWrxA/view?embed" },
             H: { galeria1: "https://www.canva.com/design/DAGtMARaWCA/VfL24UMgujsCedhvFP9ONw/view?embed" },
           };
+		  
+		  const anuncioCliente = {
+            V: { galeria5: "https://www.canva.com/design/DAGtMARaWCA/VfL24UMgujsCedhvFP9ONw/view?embed" },
+            H: { galeria5: "https://www.canva.com/design/DAGtMARaWCA/VfL24UMgujsCedhvFP9ONw/view?embed" },
+          };
 
-          const nuevasGalerias = {
+			//Galeria 5 es especial para lanzar anucnio modal, por el boton de "Enterado"
+			const nuevasGalerias = {
             galeria1: data[`urlGallery1${sufijo}`] || defaults[sufijo].galeria1,
             galeria2: data[`urlGallery2${sufijo}`] || "",
             galeria3: data[`urlGallery3${sufijo}`] || "",
             galeria4: data[`urlGallery4${sufijo}`] || "",
-            galeria5: data[`urlGallery5${sufijo}`] || "",
+            galeria5: data[`urlGallery5${sufijo}`] || anuncioCliente[sufijo].galeria5,
           };
 
           setUrlsGalerias(nuevasGalerias);
@@ -266,9 +281,6 @@ const Botones = ({ onPlayPause, onRewind, onForward, onToggleMute, isMuted, isPl
 
 
   useEffect(() => {
-    const fechaInicio = new Date(fechaInicioModal);
-    const fechaFin = new Date(fechaFinModal);
-    const fechaActual = new Date();
     const enRango = fechaActual >= fechaInicio && fechaActual <= fechaFin;
 
     if (abrirModalPorDefecto && enRango && !modalYaAbiertoRef.current && (urlMiAnuncio || Object.keys(urlsGalerias).length > 0)) {
@@ -510,12 +522,28 @@ return (
 			allowFullScreen
 		  ></iframe>
 
-		  {/* ✅ Botón superpuesto */}
-		  <button className="boton-aceptar-superpuesto" onClick={() => {
-			window.history.back(); // esto automáticamente activa el cierre desde useEffect
-		  }}>
+		{galeriaActual === urlMiAnuncio ? (
+		  <button
+			className="boton-aceptar-superpuesto"
+			onClick={() => window.open(miSitioWeb, "_blank")}
+		  >
+			Visitar Web
+		  </button>
+		) : ["galeria1V", "galeria1H", "galeria2V", "galeria2H", "galeria3V", "galeria3H", "galeria4V", "galeria4H", "galeria5V", "galeria5H"].includes(galeriaActual) ? null 
+		  : abrirModalPorDefecto &&
+			fechaActual >= fechaInicio &&
+			fechaActual <= fechaFin ? ( //Cambiar validacion
+		  <button
+			className="boton-aceptar-superpuesto"
+			onClick={() => setModalAbierto(false)}
+		  >
 			Aceptar
 		  </button>
+		) : null}
+
+
+		  
+		  
 		</div>
 
 			  </div>
