@@ -2,6 +2,18 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Botones.css";
 import { motion, AnimatePresence } from "framer-motion";
 
+//Mis Apps
+import iconurl1 from '../assets/url1.png';
+import iconurl2 from '../assets/url2.png';
+import iconurl3 from '../assets/url3.png';
+import iconurl4 from '../assets/url4.png';
+import iconurl5 from '../assets/url5.png';
+import iconurl6 from '../assets/url6.png';
+import iconurl7 from '../assets/url7.png';
+import iconurl8 from '../assets/url8.png';
+import iconurl9 from '../assets/url9.png';
+import iconurl10 from '../assets/url10.png';
+
 //CONFIGURAR SI SE LANZA ANUNCIO  
 // Variables configurables para abrir modal por defecto
 const abrirModalPorDefecto = false; // Cambia a false si no quieres abrirlo al inicio 
@@ -26,18 +38,18 @@ const telefonoMovil = "+524771234567";
 const correoGmail = "";
 const urlMaps = "https://maps.app.goo.gl/SDrNf61UzYTD5FaM8";
 const urlCalendy = "https://calendly.com/adanmendezeng/reservar-espacio";
-const url1 = "";
-const url2 = ""; 
-const url3 = ""; 
-const url4 = "";
-const url5 = "";
-const url6 = "";
-const url7 = "";
-const url8 = "";
-const url9 = "";
-const url10 = "";
+const url1 = "https://scan.page/p/0ZHqkk"; //Info de Negocio
+const url2 = "https://scan.page/p/Y9lX8w"; //Pdf Básico
+const url3 = "https://scan.page/p/EnBlI4";//Galeria de Imágenes
+const url4 = "https://yotepromociono.store";//Pdf varios
+const url5 = "https://yotepongoonline.site";//Tarjeta animada básica
+const url6 = "https://qr.pro/i/p/6852fceb649eb";//Menu básico
+const url7 = "https://yoteinvito.store";//Mariscos yoteinvio.store
+const url8 = "https://beenarydance.com";//Dentista
+const url9 = "https://jochosmiguel.store";//Hamburguesas
+const url10 = "https://barberstylepostre.site"; //BarerStyle
 const mensajeWhats = encodeURIComponent("¡Hola!");
-const mensajeCompartir = encodeURIComponent("Sonríe con confianza.");
+const mensajeCompartir = encodeURIComponent("Tu negocio en linea.");
 const mensajeGmail = encodeURIComponent("¡Hola!");
 
 // Cargar imágenes sin que truene si no existen
@@ -45,7 +57,6 @@ let iconRewind, iconPlay, iconPause, iconForward, iconMute, iconVol, iconMenu;
 let iconGmail, iconWhats, iconMaps, iconPhone, iconShare, iconCalendy, iconReport;
 let iconGallery1, iconGallery2, iconGallery3, iconGallery4, iconGallery5;
 let iconPDF1, iconPDF2, iconPDF3, iconPDF4, iconPDF5, iconPDF6, iconPDF7, iconPDF8, iconPDF9, iconPDF10;
-let iconurl1, iconurl2, iconurl3, iconurl4, iconurl5, iconurl6, iconurl7, iconurl8, iconurl9, iconurl10;
 let iconMiWa, iconMiMail;
 
 try { iconRewind = require('../assets/preview.png'); } catch {}
@@ -79,19 +90,12 @@ try { iconPDF8 = require('../assets/pdf8.png'); } catch {}
 try { iconPDF9 = require('../assets/pdf9.png'); } catch {}
 try { iconPDF10 = require('../assets/pdf10.png'); } catch {}
 
-try { iconurl1 = require('../assets/url1.png'); } catch {}
-try { iconurl2 = require('../assets/url2.png'); } catch {}
-try { iconurl3 = require('../assets/url3.png'); } catch {}
-try { iconurl4 = require('../assets/url4.png'); } catch {}
-try { iconurl5 = require('../assets/url5.png'); } catch {}
-try { iconurl6 = require('../assets/url6.png'); } catch {}
-try { iconurl7 = require('../assets/url7.png'); } catch {}
-try { iconurl8 = require('../assets/url8.png'); } catch {}
-try { iconurl9 = require('../assets/url9.png'); } catch {}
-try { iconurl10 = require('../assets/url10.png'); } catch {}
+
 //Mis iconos
 try { iconMiWa = require('../assets/miWa.png'); } catch {}
 try { iconMiMail = require('../assets/miMail.png'); } catch {}
+
+//Mis aplicaciones
 
 
 
@@ -174,7 +178,7 @@ const Botones = ({ onPlayPause, onRewind, onForward, onToggleMute, isMuted, isPl
 
   const compartir = async () => {
     const shareData = {
-      title: "Dentista",
+      title: "Postres Web",
       text: decodeURIComponent(mensajeCompartir),
       url: window.location.href,
     };
@@ -277,8 +281,8 @@ const Botones = ({ onPlayPause, onRewind, onForward, onToggleMute, isMuted, isPl
 
 
           const defaults = {
-            H: { galeria1: "https://www.canva.com/design/DAGuUBRzATc/vd1ypOkcqGT8CzFapzKJRA/view?embed" },
-            V: { galeria1: "https://www.canva.com/design/DAGuUJCCHFI/kBg_671sTRw3IQ4ldV1aTQ/view?embed" },
+            H: { galeria1: "https://www.canva.com/design/DAGuaOzAMfk/I5XkT-rWw8iUFfpmjonizw/view?embed" },
+            V: { galeria1: "https://www.canva.com/design/DAGuAG_Ldtw/ejX6QhjQKTmM3bkP7JWrxA/view?embed" },
           };
 		  
 			const nuevasGalerias = {
@@ -455,8 +459,8 @@ return (
 	  {/* Reproductor */}
       <div className="reproductor">
         {iconGallery1 && <button onClick={() => abrirGaleria(1)}><img src={iconGallery1} alt="Galería 1" /></button>}
-		{iconCalendy && <button onClick={abrirCalendy}><img src={iconCalendy} alt="Calendly" /></button>}
         {iconMiWa && <button onClick={abrirMiWhatsApp}><img src={iconMiWa} alt="WhatsApp" /></button>}
+        {iconShare && <button onClick={compartir}><img src={iconShare} alt="Compartir" /></button>}
         {iconMute && iconVol && (
           <button onClick={onToggleMute}>
             <img src={isMuted ? iconMute : iconVol} alt="Silenciar/Sonar" />
@@ -553,7 +557,7 @@ return (
             {iconPDF10 && <button onClick={() => manejarClickPDF(10)}><img src={iconPDF10} alt="PDF 10" /></button>}
 
             {/*Botones para las URL*/}
-            {/*{iconurl1 && <button onClick={() => abrirURL1()}><img src={iconurl1} alt="URL 1" /></button>}*/}
+            {iconurl1 && <button onClick={() => abrirURL1()}><img src={iconurl1} alt="URL 1" /></button>}
             {iconurl2 && <button onClick={() => abrirURL2()}><img src={iconurl2} alt="URL 2" /></button>}
             {iconurl3 && <button onClick={() => abrirURL3()}><img src={iconurl3} alt="URL 3" /></button>}
             {iconurl4 && <button onClick={() => abrirURL4()}><img src={iconurl4} alt="URL 4" /></button>}
@@ -569,7 +573,6 @@ return (
             {/*{iconWhats && <button onClick={abrirWhatsApp}><img src={iconWhats} alt="WhatsApp" /></button>}*/}
             {iconPhone && <button onClick={llamar}><img src={iconPhone} alt="Teléfono" /></button>}
             {iconMaps && <button onClick={abrirMaps}><img src={iconMaps} alt="Ubicación" /></button>}
-            {iconShare && <button onClick={compartir}><img src={iconShare} alt="Compartir" /></button>}
             {iconReport && <button onClick={abrirModalMiAnuncio}><img src={iconReport} alt="Anuncio" /></button>}
 
             {/* Mis datos de Empresa */}
